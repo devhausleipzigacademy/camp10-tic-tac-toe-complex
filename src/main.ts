@@ -10,7 +10,15 @@ const gridSizeInput = document.getElementById("grid") as HTMLInputElement;
 const winConditionInput = document.getElementById("win") as HTMLInputElement;
 
 //initial states
+type Player = "x" | "o";
+type Board = (Player | null)[][];
 
+let currentPlayer: Player = "x";
+let scores: Record<Player, number> = {
+	x: 0,
+	o: 0,
+};
+let gameBoard: Board = [];
 let gridSize: number = 0;
 let winCondition: number = 0;
 
@@ -21,9 +29,51 @@ gridForm.addEventListener("submit", (event) => {
 
 	gridSize = parseInt(gridSizeInput.value);
 	winCondition = parseInt(winConditionInput.value);
-	console.log(
-		`user said to have a grid of size ${gridSize} x ${gridSize}, with a win condition of ${winCondition}`
-	);
+
+	// Validate the inputs
+
+	if (gridSize > 10) {
+		alert(
+			"Whoa there, partner! Let's not get too wild. Try a number 10 or less."
+		);
+		return;
+	}
+
+	if (gridSize < winCondition) {
+		alert("Grid size must be greater than or equal to win condition.");
+		return;
+	}
+
+	// Create the game board
+	gameBoard = Array(gridSize)
+		.fill(null)
+		.map(() => Array(gridSize).fill(null));
+
+	// Generate the grid
+	generateGrid();
 });
 
-// user said to have a grid of size n x n, with a win condition of y
+function generateGrid() {
+	// Clear the grid container
+	while (gridContainer.firstChild) {
+		gridContainer.firstChild.remove();
+	}
+
+	// Set the grid properties
+	gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+	gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+
+	// Create the cells
+	for (let i = 0; i < gridSize; i++) {
+		for (let j = 0; j < gridSize; j++) {
+			const cell = document.createElement("div");
+			cell.className = "cell";
+			cell.id = `${i}-${j}`;
+
+			// Add the onclick handler...
+			// ...
+
+			gridContainer.appendChild(cell);
+		}
+	}
+}
