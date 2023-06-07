@@ -3,9 +3,27 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>complex</title>
+		<title>Tic Tac Toe</title>
 	</head>
 	<body>
+		<div id="scoreboard">
+			<div id="player1" class="player active">
+				Player 1: <span id="score1">0</span>
+			</div>
+			<div id="player2" class="player">
+				Player 2: <span id="score2">0</span>
+			</div>
+			<button id="reset">Reset Scores</button>
+		</div>
+
+		<form id="gridForm">
+			<input type="number" id="grid" placeholder="Grid size" required />
+			<input type="number" id="win" placeholder="Win condition" required />
+			<button type="submit">Generate Grid</button>
+		</form>
+
+		<div id="gridContainer"></div>
+
 		<script type="module" src="/src/main.ts"></script>
 	</body>
 </html>

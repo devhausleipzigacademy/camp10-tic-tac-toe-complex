@@ -3,3 +3,67 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #f4f4f4;
+	font-family: Arial, sans-serif;
+}
+
+/* Score-Board */
+
+#scoreboard {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.player {
+	font-size: 1.2rem;
+	color: #007bff;
+}
+
+.player.active {
+	color: #ff007f;
+}
+
+#reset {
+	background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+/* Grid */
+
+#gridForm {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+#gridForm input {
+	margin: 0 10px;
+	padding: 10px;
+	font-size: 16px;
+}
+
+#gridForm button {
+	background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
