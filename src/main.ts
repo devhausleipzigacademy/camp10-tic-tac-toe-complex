@@ -1,3 +1,4 @@
+import { checkWin } from "./checkwin";
 import "./style.css";
 
 // grab dom elements
@@ -82,11 +83,15 @@ function generateGrid() {
 					gameBoard[i][j] = currentPlayer;
 
 					//check for win
+					if (checkWin(gameBoard, currentPlayer, winCondition)) {
+						scores[currentPlayer]++;
+						alert("you won!");
+					}
 
-					// Switch the current player
 					currentPlayer = currentPlayer === "x" ? "o" : "x";
 					player1?.classList.toggle("active");
 					player2?.classList.toggle("active");
+					// Switch the current player
 				}
 			});
 
