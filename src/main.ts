@@ -75,15 +75,19 @@ function generateGrid() {
 			// Add the onclick handler
 			cell.addEventListener("click", () => {
 				// Add the current player's symbol to the cell
-				cell.textContent = currentPlayer;
-				cell.style.fontSize = `${cell.offsetWidth * 0.7}px`;
+				if (!cell.textContent) {
+					cell.textContent = currentPlayer;
+					cell.style.fontSize = `${cell.offsetWidth * 0.7}px`;
 
-				gameBoard[i][j] = currentPlayer;
+					gameBoard[i][j] = currentPlayer;
 
-				// Switch the current player
-				currentPlayer = currentPlayer === "x" ? "o" : "x";
-				player1?.classList.toggle("active");
-				player2?.classList.toggle("active");
+					//check for win
+
+					// Switch the current player
+					currentPlayer = currentPlayer === "x" ? "o" : "x";
+					player1?.classList.toggle("active");
+					player2?.classList.toggle("active");
+				}
 			});
 
 			gridContainer.appendChild(cell);
