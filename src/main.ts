@@ -1,6 +1,8 @@
 import "./style.css";
 
 // grab dom elements
+const player1 = document.getElementById("player1") as HTMLElement;
+const player2 = document.getElementById("player2") as HTMLElement;
 const gridContainer = document.getElementById("gridContainer") as HTMLElement;
 const player1Score = document.getElementById("score1") as HTMLElement;
 const player2Score = document.getElementById("score2") as HTMLElement;
@@ -70,8 +72,19 @@ function generateGrid() {
 			cell.className = "cell";
 			cell.id = `${i}-${j}`;
 
-			// Add the onclick handler...
-			// ...
+			// Add the onclick handler
+			cell.addEventListener("click", () => {
+				// Add the current player's symbol to the cell
+				cell.textContent = currentPlayer;
+				cell.style.fontSize = `${cell.offsetWidth * 0.7}px`;
+
+				gameBoard[i][j] = currentPlayer;
+
+				// Switch the current player
+				currentPlayer = currentPlayer === "x" ? "o" : "x";
+				player1?.classList.toggle("active");
+				player2?.classList.toggle("active");
+			});
 
 			gridContainer.appendChild(cell);
 		}
